@@ -19,6 +19,18 @@ class App extends Component {
     this.fetchParks = this.fetchParks.bind(this);
   }
 
+  componentDidMount() {
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+    this.map = new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/light-v10',
+      zoom: 1,
+    });
+    this.fetchDogs();
+    this.fetchParks()
+    this.map.addControl(new mapboxgl.NavigationControl());
+  }
+
   toggleDogs() {
     var dogs = document.getElementsByClassName("dog-marker");
     var i;
@@ -43,18 +55,6 @@ class App extends Component {
       }
     }
     this.setState({showParks: !this.state.showParks})
-  }
-
-  componentDidMount() {
-    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-    this.map = new mapboxgl.Map({
-      container: 'map-container',
-      style: 'mapbox://styles/mapbox/light-v10',
-      zoom: 1,
-    });
-    this.fetchDogs();
-    this.fetchParks()
-    this.map.addControl(new mapboxgl.NavigationControl());
   }
 
   fetchDogs() {
