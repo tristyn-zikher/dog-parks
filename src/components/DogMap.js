@@ -1,6 +1,7 @@
 import React from 'react';
 import ToggleBar from './ToggleBar';
 import MapContainer from './MapContainer';
+import PropTypes from 'prop-types';
 
 const DogMap = ({ toggleDogs, toggleParks, showDogs, showParks }) => {
   return (
@@ -14,6 +15,13 @@ const DogMap = ({ toggleDogs, toggleParks, showDogs, showParks }) => {
      <MapContainer />
    </div>
   )
+}
+
+DogMap.propTypes = {
+  showDogs: PropTypes.bool.isRequired,
+  showParks: PropTypes.bool.isRequired,
+  toggleDogs: PropTypes.func.isRequired,
+  toggleParks: PropTypes.func.isRequired,
 }
 
 export default DogMap;
