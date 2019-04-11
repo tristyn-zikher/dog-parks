@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DogMap from './components/DogMap';
 import Logo from './components/Logo';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import { MAPBOX_ACCESS_TOKEN } from './config'
+import { MAPBOX_ACCESS_TOKEN, API_URL } from './config'
 
 import './App.css';
 
@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   fetchDogs() {
-    fetch("http://dogfinder.emboldhealth.com/parks?limit=100&offset=0")
+    fetch(API_URL+"parks?limit=100&offset=0")
     .then((res) => {
       return res.json();
     })
@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   fetchParks() {
-    fetch("http://dogfinder.emboldhealth.com/dogs?limit=100&offset=0")
+    fetch(API_URL+"dogs?limit=100&offset=0")
     .then((res) => {
       return res.json();
     })
